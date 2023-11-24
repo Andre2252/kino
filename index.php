@@ -2,7 +2,13 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-dd(['Ву']);
+dd(['Вау! работает!!!']);
+
+function test(){
+   echo "test";
+}
+// ./vendor/bin/pint
+
 
 
 ?>
