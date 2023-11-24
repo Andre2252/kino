@@ -2,13 +2,10 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-dd(['Вау! работает!!!']);
+$routes = require_once __DIR__.'/config/routes.php';
 
-function test(){
-   echo "test";
-}
-// ./vendor/bin/pint
+$uri = $_SERVER['REQUEST_URI'];
 
-
+$routes[$uri]();
 
 ?>
