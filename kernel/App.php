@@ -12,8 +12,6 @@ class App
       $router = new Router();
       $request = Request::createFromGlobals();
 
-      //dd($request->uri());
-
       $router->dispatch($request->uri(), $request->method());
    }
 }
