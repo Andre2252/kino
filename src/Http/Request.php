@@ -13,15 +13,19 @@ class Request
    ) {
    }
 
-   public static function createFromGlobals(): self
+   public static function createFromGlobals(): static
    {
-      return new self(
-         $_GET,
-         $_POST,
-         $_SERVER,
-         $_FILES,
-         $_COOKIE,
-      );
+      return new static($_GET, $_POST, $_SERVER, $_FILES, $_COOKIE,);
+   }
+
+   public function uri(): string
+   {
+      return strtok($this->server['REQUEST_URI'], token: '?');
+   }
+
+   public function method(): string
+   {
+      return $this->server['REQUEST_METHOD'];
    }
 }
 
