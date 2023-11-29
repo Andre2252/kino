@@ -1,5 +1,4 @@
 <?php
-   
    namespace App\Controllers;
 
    use App\Kernel\Controller\Controller;
@@ -9,12 +8,14 @@
    {
       public function index(): void
       {
-         $this->view('movies');
-
-         $view = new View();
-
-         $view->page(name: 'movies');
+         $this->view(name: 'movies');
       }
+
+      public function add(): void
+      {
+         $this->view(name: 'admin/movies/add');
+      }
+
    }
 
 ?>
