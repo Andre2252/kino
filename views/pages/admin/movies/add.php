@@ -7,7 +7,7 @@
 <?php $view->component(name:'start') ?>
    <h1>Add movie page</h1>
 
-   <form action="" method="POST">
+   <form action="/admin/movies/add" method="POST">
       <p>Name</p>
       <div>
          <input type="text" name="name">
