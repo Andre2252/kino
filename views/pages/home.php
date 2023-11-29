@@ -4,6 +4,6 @@
    */
 ?>
 
-<?php $view->component(name:'start') ?>
+<?php $view->component(name:'start1') ?>
    <h1>Home page</h1>
 <?php $view->component(name:'end') ?>
