@@ -6,10 +6,17 @@
    {
       public function page(string $name): void
       {
-         extract([
-            'view' => $this
-         ]);
 
+         $viewPath = APP_PATH."/views/pages/$name.php";
+
+         if (!file_exists($viewPath)) {
+            throw new \Exception(message:"View $name not found (Вид $name не найден)");
+         }
+
+         extract([
+            'view' => $this,
+         ]);
+         
          include_once APP_PATH."/views/pages/$name.php";
       }
       
