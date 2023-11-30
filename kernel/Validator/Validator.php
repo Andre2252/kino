@@ -44,17 +44,17 @@
          switch ($ruleName) {
             case 'required':
                if (empty($value)) {
-                  return 'Field is required (Обязательное для заполнения поле)';
+                  return 'Field is required (Обязательное заполнение поля)';
                }
                break;
             case 'min':
                if (strlen($value) < $ruleValue) {
-                  return "Field must be at least {$ruleValue} characters long";
+                  return "Field must be at least '{$ruleValue}' characters long (Поле должно содержать не менее '{$ruleValue}-х' символов)";
                }
                break;
             case 'max':
                if (strlen($value) > $ruleValue) {
-                  return "Field must be at most {$ruleValue} characters long";
+                  return "Field must be at most '{$ruleValue}' characters long (Поле должно содержать не более '{$ruleValue}-ти' символов)";
                }
                break;
             case 'email':
