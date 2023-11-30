@@ -44,22 +44,22 @@
          switch ($ruleName) {
             case 'required':
                if (empty($value)) {
-                  return 'Field is required (Обязательное заполнение поля)';
+                  return "Field '$key' is required (Поле '$key' обязательно к заполнению)";
                }
                break;
             case 'min':
                if (strlen($value) < $ruleValue) {
-                  return "Field must be at least '{$ruleValue}' characters long (Поле должно содержать не менее '{$ruleValue}-х' символов)";
+                  return "Field '$key' must be at least '{$ruleValue}' characters long (Поле '$key' должно содержать не менее '{$ruleValue}-х' символов)";
                }
                break;
             case 'max':
                if (strlen($value) > $ruleValue) {
-                  return "Field must be at most '{$ruleValue}' characters long (Поле должно содержать не более '{$ruleValue}-ти' символов)";
+                  return "Field '$key' must be at most '{$ruleValue}' characters long (Поле '$key' должно содержать не более '{$ruleValue}-ти' символов)";
                }
                break;
             case 'email':
                if (! filter_var($value, filter: FILTER_VALIDATE_EMAIL)) {
-                  return 'Field must be a valid email address';
+                  return 'Field "$key" must be a valid Email address (Поле "$key" должно быть с действительным Email-адресом)';
                }
                break;
          }

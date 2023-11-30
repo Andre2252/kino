@@ -19,7 +19,7 @@
 
       public function store()
       {
-         $data = ['name' => ''];
+         $data = ['name' => 'Andrej'];
          $rules = ['name' => ['required', 'min:3', 'max:255']];
 
          $validator = new Validator();
