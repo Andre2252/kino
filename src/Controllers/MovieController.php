@@ -16,19 +16,18 @@
       {
          $this->view(name: 'admin/movies/add');
       }
-
       public function store()
       {
-         $data = ['name' => 'Andrej'];
-         $rules = ['name' => ['required', 'min:3', 'max:255']];
+         $validation = $this->request()->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+         ]);
 
-         $validator = new Validator();
+         if (! $validation) {
+            dd('Validation failed', $this->request()->errors());
+         }
 
-         dd($validator->validate($data, $rules), $validator->errors());
-
-         dd($this->request()->input('name'));
+         dd('Validation passed');
       }
-
    }
 
 ?>
