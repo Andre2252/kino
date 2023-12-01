@@ -2,12 +2,8 @@
 
 namespace App\Kernel\Http;
 
-class Redirect
+interface RedirectInterface
 {
-   public function to(string $url)
-   {
-      header("Location: $url");
-      exit;
-   }
+   public function to(string $url);
 }
 ?>
