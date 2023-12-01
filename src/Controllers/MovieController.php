@@ -2,8 +2,8 @@
    namespace App\Controllers;
 
    use App\Kernel\Controller\Controller;
-use App\Kernel\Http\Redirect;
-use App\Kernel\Validator\Validator;
+   use App\Kernel\Http\Redirect;
+   use App\Kernel\Validator\Validator;
    use App\Kernel\View\View;
 
    class MovieController extends Controller
@@ -12,13 +12,14 @@ use App\Kernel\Validator\Validator;
       {
          $this->view(name: 'movies');
       }
-
       public function add(): void
       {
          $this->view(name: 'admin/movies/add');
       }
       public function store()
       {
+         dd($this->session());
+
          $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:50'],
          ]);

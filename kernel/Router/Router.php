@@ -12,7 +12,7 @@ class Router
    private array $routes = [
       'GET' => [],
       'POST' => [],
-      
+
    ];
    
    public function __construct(
@@ -36,12 +36,12 @@ class Router
 
          /** @var Controller $controller */
          
-         
          $controller = new $controller();
 
          call_user_func([$controller, 'setView'], $this->view);
          call_user_func([$controller, 'setRequest'], $this->request);
          call_user_func([$controller, 'setRedirect'], $this->redirect);
+         call_user_func([$controller, 'setSession'], $this->session);
          
          call_user_func([$controller, $action]);
       } else {
