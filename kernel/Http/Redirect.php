@@ -7,6 +7,7 @@
       public function to(string $url)
       {
          header("Location: $url");
+         exit;
       }
    }
 ?>

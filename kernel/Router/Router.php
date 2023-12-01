@@ -2,6 +2,7 @@
 
 namespace App\Kernel\Router;
 
+use App\Kernel\Http\Redirect;
 use App\Kernel\Http\Request;
 use App\Kernel\View\View;
 
@@ -9,13 +10,13 @@ class Router
 {
    private array $routes = [
       'GET' => [],
-      'POST' => []
-   
+      'POST' => [],
    ];
    
    public function __construct(
       private View $view,
       private Request $request,
+      private Redirect $redirect,
    ) {
       $this->initRoutes();
    }
@@ -31,10 +32,13 @@ class Router
          [$controller, $action] = $route->getAction();
 
          /** @var Controller $controller */
+         
+         
          $controller = new $controller();
 
          call_user_func([$controller, 'setView'], $this->view);
          call_user_func([$controller, 'setRequest'], $this->request);
+         call_user_func([$controller, 'setRedirect'], $this->redirect);
          
          call_user_func([$controller, $action]);
       } else {

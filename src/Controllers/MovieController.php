@@ -2,7 +2,8 @@
    namespace App\Controllers;
 
    use App\Kernel\Controller\Controller;
-   use App\Kernel\Validator\Validator;
+use App\Kernel\Http\Redirect;
+use App\Kernel\Validator\Validator;
    use App\Kernel\View\View;
 
    class MovieController extends Controller
@@ -23,7 +24,8 @@
          ]);
 
          if (! $validation) {
-            dd('Validation failed', $this->request()->errors());
+            $this->redirect('/admin/movies/add');
+            //dd('Validation failed', $this->request()->errors());
          }
 
          dd('Validation passed');
