@@ -14,6 +14,7 @@ abstract class Controller
    private Request $request;
    
    private Redirect $redirect;
+   
    private Session $session;
    
    public function view(string $name): void
