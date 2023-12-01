@@ -7,7 +7,7 @@ use App\Kernel\Http\Request;
 use App\Kernel\View\View;
 use App\Kernel\Session\Session;
 
-class Router 
+class Router implements RouterInterface
 {
    private array $routes = [
       'GET' => [],
