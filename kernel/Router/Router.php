@@ -5,18 +5,21 @@ namespace App\Kernel\Router;
 use App\Kernel\Http\Redirect;
 use App\Kernel\Http\Request;
 use App\Kernel\View\View;
+use App\Kernel\Session\Session;
 
 class Router 
 {
    private array $routes = [
       'GET' => [],
       'POST' => [],
+      
    ];
    
    public function __construct(
       private View $view,
       private Request $request,
       private Redirect $redirect,
+      private Session $session,
    ) {
       $this->initRoutes();
    }

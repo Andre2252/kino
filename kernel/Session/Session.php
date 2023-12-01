@@ -19,6 +19,14 @@
          return $_SESSION[$key] ?? $default;
       }
 
+      public function getFlash(string $key, $default = null)
+      {
+         $value = $this->get($key, $default);
+         $this->remove($key);
+         
+         return $value;
+      }
+
       public function has(string $key): bool
       {
          return isset($_SESSION[$key]);
