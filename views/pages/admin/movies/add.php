@@ -12,6 +12,10 @@
       <div>
          <input type="text" name="name">
       </div>
+      <ul>
+         <li style="color: red;">Error 1</li>
+         <li style="color: red;">Error 2</li>
+      </ul>
       <div>
          <button>Add</button>
       </div>
