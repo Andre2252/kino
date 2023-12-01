@@ -3,7 +3,6 @@
    * @var \App\Kernel\View\View $view 
    * @var \App\Kernel\Session\Session $session
    */
-  dd($session);
 ?>
 
 <?php $view->component(name:'start') ?>
@@ -14,10 +13,13 @@
       <div>
          <input type="text" name="name">
       </div>
-      <ul>
-         <li style="color: red;">Error 1</li>
-         <li style="color: red;">Error 2</li>
-      </ul>
+      <?php if($session->has('name')) { ?>
+         <ul>
+            <?php foreach ($session->getFlash(key: 'name') as $error) { ?>
+               <li style="color: red;"><?php echo $error ?></li>
+            <?php } ?>
+         </ul>
+      <?php } ?>
       <div>
          <button>Add</button>
       </div>
