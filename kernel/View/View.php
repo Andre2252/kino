@@ -2,10 +2,17 @@
 
    namespace App\Kernel\View;
 
-use App\Kernel\Exceptions\ViewNotFoundException;
+   use App\Kernel\Exceptions\ViewNotFoundException;
+   use App\Kernel\Session\Session;
 
    class View 
    {
+      public function __construct(
+         private Session $session
+      )
+      {
+      }
+
       public function page(string $name): void
       {
          $viewPath = APP_PATH."/views/pages/$name.php";
@@ -14,9 +21,7 @@ use App\Kernel\Exceptions\ViewNotFoundException;
             throw new ViewNotFoundException(message:"View: '$name' not found (Страница: '$name' не найдена)");
          }
 
-         extract([
-            'view' => $this,
-         ]);
+         extract($this->defaultData());
 
          include_once $viewPath;
       }
@@ -30,7 +35,15 @@ use App\Kernel\Exceptions\ViewNotFoundException;
             return;
          }
 
-         include_once APP_PATH."/views/components/$name.php";
+         include_once $componentPath; //APP_PATH."/views/components/$name.php";
+      }
+
+      private function defaultData(): array 
+      {
+         return [
+            'view' => $this,
+            'session' => $this->session,
+         ];
       }
    }
 ?>

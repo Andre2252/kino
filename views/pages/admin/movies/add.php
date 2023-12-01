@@ -1,7 +1,9 @@
 <?php
    /**
    * @var \App\Kernel\View\View $view 
+   * @var \App\Kernel\Session\Session $session
    */
+  dd($session);
 ?>
 
 <?php $view->component(name:'start') ?>
