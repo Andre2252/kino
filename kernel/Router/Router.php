@@ -3,9 +3,13 @@
 namespace App\Kernel\Router;
 
 use App\Kernel\Http\Redirect;
+use App\Kernel\Http\RedirectInterface;
 use App\Kernel\Http\Request;
+use App\Kernel\Http\RequestInterface;
 use App\Kernel\View\View;
 use App\Kernel\Session\Session;
+use App\Kernel\Session\SessionInterface;
+use App\Kernel\View\ViewInterface;
 
 class Router implements RouterInterface
 {
@@ -16,10 +20,10 @@ class Router implements RouterInterface
    ];
    
    public function __construct(
-      private View $view,
-      private Request $request,
-      private Redirect $redirect,
-      private Session $session,
+      private ViewInterface $view,
+      private RequestInterface $request,
+      private RedirectInterface $redirect,
+      private SessionInterface $session,
    ) {
       $this->initRoutes();
    }
