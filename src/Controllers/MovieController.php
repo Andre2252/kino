@@ -29,7 +29,11 @@
             $this->redirect('/admin/movies/add');
          }
 
-         dd('Validation passed');
+         $id = $this->db()->insert('movies', [
+            'name' => $this->request()->input('name'),
+         ]);
+
+         dd("Movie added successfully with (Фильм успешно добавлен c) id: $id");
       }
    }
 

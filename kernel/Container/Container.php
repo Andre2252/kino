@@ -49,10 +49,16 @@ class Container
       $this->request->setValidator($this->validator);
       $this->redirect = new Redirect();
       $this->session = new Session();
-      $this->view = new View($this->session);
-      $this->router = new Router($this->view, $this->request, $this->redirect, $this->session);
       $this->config = new Config();
       $this->database = new Database($this->config);
+      $this->view = new View($this->session);
+      $this->router = new Router(
+         $this->view, 
+         $this->request, 
+         $this->redirect, 
+         $this->session, 
+         $this->database, 
+      );
    }
 }
 
