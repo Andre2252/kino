@@ -3,8 +3,8 @@
    namespace App\Kernel\View;
 
    use App\Kernel\Exceptions\ViewNotFoundException;
-   use App\Kernel\Session\Session;
-use App\Kernel\Session\SessionInterface;
+   //use App\Kernel\Session\Session;
+   use App\Kernel\Session\SessionInterface;
 
    class View implements ViewInterface
    {
