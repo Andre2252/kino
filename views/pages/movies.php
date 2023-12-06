@@ -1,7 +1,5 @@
 <?php
-   /**
-   * @var \App\Kernel\View\View $view 
-   */
+   /** @var \App\Kernel\View\View $view ...*/
 ?>
 
 <?php $view->component(name:'start') ?>
