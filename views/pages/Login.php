@@ -7,7 +7,7 @@
 <?php $view->component(name:'start') ?>
    <h1>Login</h1>
 
-   <form action="/register" method="POST">
+   <form action="/login" method="POST">
       
       <?php if($session->has(key: 'error')) { ?>
          <p style="color: red;">
@@ -19,7 +19,7 @@
       <p>Password</p>
       <input type="text" name="password">
       <div>
-         <button>Register</button>
+         <button>login</button>
       </div>
    </form>
 <?php $view->component(name:'end') ?>

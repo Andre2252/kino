@@ -10,5 +10,10 @@
       {
          $this->view(name: 'login');
       }
+
+      public function login()
+      {
+         dd($this->auth());
+      }
    }
 ?>
