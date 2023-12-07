@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
       $userId = $this->db()->insert('users', [
          'email' => $this->request()->input('email'),
-         'password' => password_hash($this->request()->input(key: 'password'), algo: PASSWORD_DEFAULT),
+         'password' => password_hash($this->request()->input('password'), PASSWORD_DEFAULT),
       ]);
 
       dd('User created with id: ' . $userId);

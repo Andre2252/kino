@@ -4,14 +4,14 @@
  * @var \App\Kernel\Session\SessionInterface $session 
 */
 ?>
-<?php $view->component(name:'start') ?>
+
+<?php $view->component('start') ?>
    <h1>Login</h1>
 
-   <form action="/login" method="POST">
-      
-      <?php if($session->has(key: 'error')) { ?>
+   <form action="/login" method="post">
+      <?php if($session->has('error')) { ?>
          <p style="color: red;">
-            <?php echo $session->getFlash(key: 'error') ?>
+            <?php echo $session->getFlash('error') ?>
          </p>
       <?php } ?>
       <p>Email-адрес</p>

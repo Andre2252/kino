@@ -71,13 +71,13 @@ abstract class Controller
    }
 
    public function auth(): AuthInterface
-    {
-        return $this->auth;
-    }
+   {
+      return $this->auth;
+   }
 
-    public function setAuth(AuthInterface $auth): void
-    {
-        $this->auth = $auth;
-    }
+   public function setAuth(AuthInterface $auth): void
+   {
+      $this->auth = $auth;
+   }
 }
 ?>

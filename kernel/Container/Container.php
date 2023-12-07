@@ -2,6 +2,7 @@
 
 namespace App\Kernel\Container;
 
+use App\Kernel\Auth\Auth;
 use App\Kernel\Auth\AuthInterface;
 use App\Kernel\Config\Config;
 use App\Kernel\Config\ConfigInterface;
@@ -37,6 +38,7 @@ class Container
    public readonly ConfigInterface $config;
 
    public readonly DatabaseInterface $database;
+   
    public readonly AuthInterface $auth;
 
    public function __construct()
