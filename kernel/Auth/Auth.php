@@ -1,8 +1,7 @@
 <?php
+
 namespace App\Kernel\Auth;
 //use App\Kernel\Auth\AuthInterface;
-//use App\Kernel\Config\ConfigInterface;
-
 use App\Kernel\Config\ConfigInterface;
 use App\Kernel\Database\DatabaseInterface;
 use App\Kernel\Session\SessionInterface;
@@ -45,15 +44,23 @@ class Auth implements AuthInterface
       return $this->session->has($this->sessionField());
    }
    
-   public function user(): ?array
+   public function user(): ?User
    {
       if (! $this->check()) {
       return null;
       }
 
-      return $this->db->first($this->table(), [
+      $user = $this->db->first($this->table(), [
          'id' => $this->session->get($this->sessionField()),
       ]);
+      if ($user) {
+         return new User(
+            $user['id'],
+            $user[$this->username()],
+            $user[$this->password()],
+         );
+      }
+      return null;
    }
 
    public function table(): string

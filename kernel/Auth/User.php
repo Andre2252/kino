@@ -15,5 +15,15 @@
       {
          return $this->id;
       }
+
+      public function email(): string
+      {
+         return $this->email;
+      }
+
+      public function password(): string
+      {
+         return $this->password;
+      }
    }
 ?>
