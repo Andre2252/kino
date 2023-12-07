@@ -37,7 +37,7 @@ class Auth implements AuthInterface
 
    public function logout(): void
    {
-     // TODO: Implement logout() method.
+     $this->session->remove($this->sessionField());
    }
 
    public function check(): bool
@@ -52,7 +52,7 @@ class Auth implements AuthInterface
       }
 
       return $this->db->first($this->table(), [
-
+         'id' => $this->session->get($this->sessionField()),
       ]);
    }
 
