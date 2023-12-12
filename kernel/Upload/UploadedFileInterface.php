@@ -4,6 +4,6 @@ namespace App\Kernel\Upload;
 
 interface UploadedFileInterface
 {
-   public function move(string $path): bool;
+   public function move(string $path, string $fileName = null): string|false;
 }
 ?>
