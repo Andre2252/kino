@@ -13,7 +13,7 @@ use App\Kernel\Http\RequestInterface;
 //use App\Kernel\Session\Session;
 use App\Kernel\Middleware\AbstractMiddleware;
 use App\Kernel\Session\SessionInterface;
-use App\Kernel\Storage\StorageInterface;
+//use App\Kernel\Storage\StorageInterface;
 //use App\Kernel\View\View;
 use App\Kernel\View\ViewInterface;
 
@@ -103,11 +103,6 @@ class Router implements RouterInterface
    {
       return require_once APP_PATH.'/config/routes.php';
    }
-
-   //private function getRoutes(): array 
-   //{
-      //return require_once APP_PATH.'/config/routes.php';
-   //}
 }
 
 ?>

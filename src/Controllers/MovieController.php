@@ -14,10 +14,12 @@
       }
       public function add(): void
       {
-         $this->view(name: 'admin/movies/add');
+         $this->view('admin/movies/add');
       }
       public function store()
       {
+         dd($this->request()->file('image'));
+         
          $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:50'],
          ]);
