@@ -22,12 +22,24 @@ class UploadedFile implements UploadedFileInterface
       if (! is_dir($storagePath)) {
          mkdir($storagePath, 0777, true);
       }
-      $fileName = $fileName ?? $this->name;
+      $fileName = $fileName ?? $this->randomFileName();
+
+      $filePath = "$storagePath/$fileName";
+
+      if (move_uploaded_file($this->tmpName, $filePath)) {
+         return "storage/$path/$fileName";
+      }
+      return false;
    }
 
-   private function randomFileName()
+   private function randomFileName(): string
    {
       return md5(uniqid(rand(), true));
+   }
+
+   public function getExtension(): string
+   {
+      return pathinfo($this->name, PATHINFO_EXTENSION);
    }
 }
 
