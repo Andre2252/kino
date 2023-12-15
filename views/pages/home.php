@@ -94,7 +94,7 @@
             src="storage/movies/tor.jpg" class="movies_cover" alt="">
             <div style="margin-top: 7px; color: #fff;" class="modal_movie-title1 ">
                <center><a class="modal_movie-title ">"ТОР 2: ЦАРСТВО ТЬМЫ"</a><br>
-                  <a style="" class="modal_movie-genre"> (marvel, США, 2013)</a>
+                  <a class="modal_movie-genre"> (marvel, США, 2013)</a>
                </center>
             </div>
             <div style="margin-top: 3px; color: #ffff00;" class="for_free ">
