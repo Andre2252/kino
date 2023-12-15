@@ -2,9 +2,10 @@
    namespace App\Controllers;
 
    use App\Kernel\Controller\Controller;
-   use App\Kernel\Http\Redirect;
-   use App\Kernel\Validator\Validator;
-   use App\Kernel\View\View;
+   use App\Services\MovieService;
+   //use App\Kernel\Http\Redirect;
+   //use App\Kernel\Validator\Validator;
+   //use App\Kernel\View\View;
 
    class MovieController extends Controller
    {
@@ -20,7 +21,9 @@
       {
          $file = $this->request()->file('image');
 
-         dd($file->move('movies', 'test.png'));
+         $filePath = $file->move('movies');
+
+         dd($this->storage()->url($filePath));
          
          $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:50'],
