@@ -1,6 +1,7 @@
 <?php
    /** 
     * @var \App\Kernel\View\ViewInterface $view 
+    * @var \App\Kernel\Session\SessionInterface $session
     */
 ?>
 
@@ -11,20 +12,37 @@
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      padding: 30px 10px;
-      background-color: rgba(0, 0, 0, 0.6);">
-      <div style="background: rgba(300, 300, 300, 1);
+      padding: 30px 10px;">
+      <div style="background: #505050;
          max-width: 600px;
-         padding: 35px;
+         padding: 20px;
          cursor: default;
          border-radius: 5px;
          margin: auto;
-         position: relative;
-         transition: all 0.8s ease 0s;">
-         <a href="/" class="popup_close close-popup">&times;</a><br>
+         position: relative;">
+         <a style="position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 32px;
+            color: #808080;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: -10px;"
+            href="/" class="popup_close close-popup">&times;
+         </a><br>
+         <style>
+            .popup_close:hover {
+               color: #000000 !important;
+            }
+         </style>
+      
          <div>
             <center>
-               <h4 style="margin-top: -20px;">РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ:</h4>
+               <h4 style="margin-top: -20px; 
+                  color: #fff;
+                  font-size: 22px;
+                  ">РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ:<hr>
+               </h4>
             </center>
          </div>
 
@@ -33,37 +51,66 @@
                <?php //echo $_SESSION['validation']['name'] 
                ?>
             </p>
-         </div><br>
+         </div>
 
-         <form action="/header/forms/registration/handler_registration.php" class="header_form" id="" method="POST">
+         <form action="/register" class="header_form" id="" method="post">
 
             <label class="ield_ite">
                <input style="background-color: #fff;
-                     " type="text" id="registration_name" name="name" class="form-control" <?php echo $_SESSION['validation']['name'] ? 'aria-invalid="true"' : '' ?> value="<?php echo @$data['name']; ?>">
-               <span>Введите имя</span>
-            </label>
-            
-            <center><a style="color: red;"><?php //echo $_SESSION['validation']['name']?></a></center>
-
-            <label class="ield_item">
-               <input style="background-color: #fff;" type="text" id="registration_email" name="email" class="form-control" value="<?php echo @$data['email']; ?>">
-               <span>Введите email-адрес</span>
-            </label>
-
-            <label class="fiel_item">
-               <input style="background-color: #fff;" type="password" id="registration_password" name="password" class="form-control" value="<?php echo @$data['password']; ?>">
-               <span>Придумайте пароль</span>
-            </label>
-
-            <label class="fiel_item">
-               <input style="background-color: #fff;" type="password" id="registration_password_control" name="password_control" class="form-control" value="<?php echo @$data['password_control']; ?>">
-               <span>Повторите пароль</span>
+               width: 400px;
+               padding: 10px;
+               border-radius: 10px;" 
+               type="text" 
+               id="registration_name" 
+               name="name" 
+               class="form-control <?php echo $session->has('name') ? 'is-invalid' : '' ?>" 
+               placeholder="Введите имя">
             </label><br>
+            <?php if($session->has('name')) { ?>
+            <div style="color: #FF0000;
+               font-family: Arial;
+               margin-top:5px;
+               font-size: 14px;
+               text-align:center;"
+               id="invalidCheck3Feedback" class="invalid-feedback">
+               <?php echo $session->getFlash('name')[0] ?>
+            </div>
+            <?php } ?><br>
+            
+            <label class="ield_item">
+               <input style="background-color: #fff;
+               width: 400px;
+               padding: 10px;
+               border-radius: 10px;" 
+               type="text" id="registration_email" name="email" class="form-control" placeholder="Введите Email-адрес">
+            </label><br><br>
+
+            <label class="fiel_item">
+               <input style="background-color: #fff;
+               width: 185px;
+               padding: 10px;
+               border-radius: 10px;" 
+               type="password" id="registration_password" name="password" class="form-control" placeholder="Придумайте пароль">
+            </label>
+
+            <label class="fiel_item">
+               <input style="background-color: #fff;
+               width: 185px;
+               padding: 10px;
+               border-radius: 10px;" 
+               type="password" id="registration_password_confirmed" name="password_confirmed" class="form-confirmed" placeholder="Повторите пароль">
+            </label><br><br>
 
             <div align="center" class="modal_footer_form_registration">
-               <button type="submit" name="button_form_registration" class="modal_button_forms" href="#popup_2">Зарегистрироваться</button>
-               <a>*</a><br><br>
-               <a>*</a><i>Нажимая "ЗАРЕГИСТРИРОВАТЬСЯ", Вы подтверждаете,<br>что прочитали и согласны с нашими Условиями Пользователя<br>и Политикой Конфиденциальности.</i>
+               <button style="width: 420px;
+                  font-size: 16px;
+                  padding: 8px;
+                  border-radius: 10px;
+                  cursor: pointer;
+                  background-color: #ffff00;" 
+                  type="submit" name="button_form_registration" class="modal_button_forms" href="#popup_2">Создать Аккаунт<a>*</a>
+               </button><br><br>
+               <a>*</a><i>Нажимая "Создать Аккаунт", Вы подтверждаете,<br>что прочитали и согласны с нашими Условиями Пользователя<br>и Политикой Конфиденциальности</i>
             </div>
          </form>
 
@@ -74,7 +121,7 @@
             }
 
             .modal_footer_form_registration i {
-               color: #600060;
+               color: #ffff00;
                font-size: 15px;
             }
          </style>

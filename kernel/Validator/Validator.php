@@ -44,22 +44,27 @@
          switch ($ruleName) {
             case 'required':
                if (empty($value)) {
-                  return "Field '$key' is required (Поле '$key' обязательно к заполнению)";
+                  return "Field is required (Поле обязательно к заполнению)!!!";
                }
                break;
             case 'min':
                if (strlen($value) < $ruleValue) {
-                  return "Field '$key' must be at least '{$ruleValue}' characters long (Поле '$key' должно содержать не менее '{$ruleValue}' символов)";
+                  return "Field must be at least '{$ruleValue}' characters long (Поле должно содержать не менее '{$ruleValue}' символов)!!!";
                }
                break;
             case 'max':
                if (strlen($value) > $ruleValue) {
-                  return "Field '$key' must be at most '{$ruleValue}' characters long (Поле '$key' должно содержать не более '{$ruleValue}' символов)";
+                  return "Field must be at most '{$ruleValue}' characters long (Поле должно содержать не более '{$ruleValue}' символов)!!!";
                }
                break;
             case 'email':
                if (! filter_var($value, filter: FILTER_VALIDATE_EMAIL)) {
-                  return "Field '$key' must be a valid Email address (Поле '$key' должно быть с действительным Email-адресом)";
+                  return "Email-address must be valid (Email-адрес должен быть действительным)!!!";
+               }
+               break;
+            case 'confirmed':
+               if ($value !== $this->data["{$key}_confirmation"]) {
+                  return "Password mismatch (Пароли не совпадают)!!!";
                }
                break;
          }

@@ -1,6 +1,7 @@
 <?php
    /** 
     * @var \App\Kernel\View\ViewInterface $view 
+    * @var \App\Kernel\Session\SessionInterface $session
     */
 ?>
 
