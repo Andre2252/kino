@@ -5,7 +5,7 @@
     */
 ?>
 
-<?php $view->component('start'); ?>
+<?php $view->component('start_simple'); ?>
 
 <main>
    <div style="min-height: 100%; 
@@ -41,44 +41,24 @@
                <h4 style="margin-top: -20px; 
                   color: #fff;
                   font-size: 22px;
-                  ">РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ:<hr>
+                  ">АВТОРИЗАЦИЯ ПОЛЬЗОВАТЕЛЯ:<hr>
                </h4>
             </center>
          </div>
-
-         <div class="error_red">
-            <p>
-               <?php //echo $_SESSION['validation']['name'] 
-               ?>
-            </p>
-         </div>
-
-         <form action="/register" class="header_form" id="" method="post">
-
-            <label class="ield_ite">
-               <input style="background-color: #fff;
-                  width: 400px;
-                  padding: 10px;
-                  border-radius: 10px;" 
-                  type="text" 
-                  id="registration_name" 
-                  name="name" 
-                  class="form-control <?php echo $session->has('name') ? 'is-invalid' : '' ?>" 
-                  placeholder="Введите имя"
-               >
-            </label><br>
-            <?php if($session->has('name')) { ?>
-            <div style="color: #FF0000;
+         <?php if ($session->has('error')) { ?>
+            <div style="color: #8B0000;
                font-family: Arial;
-               margin-top:5px;
+               margin-top: -20px;
                font-size: 14px;
-               text-align:center;"
-               id="name" 
-               class="invalid-feedback">
-               <?php echo $session->getFlash('name')[0] ?>
-            </div>
-            <?php } ?><br>
-            
+               width: 400px;
+               background-color: #F08080;
+               padding: 10px;
+               text-align:center;">
+               <?php echo $session->getFlash('error') ?>
+            </div><br>
+         <?php } ?>
+
+         <form action="/login" class="header_form" id="" method="post">
             <label class="ield_item">
                <input style="background-color: #fff;
                   width: 400px;
@@ -94,7 +74,7 @@
             <?php if($session->has('email')) { ?>
             <div style="color: #FF0000;
                font-family: Arial;
-               margin-top:5px;
+               margin-top: 25px;
                font-size: 14px;
                text-align:center;"
                id="email" 
@@ -105,27 +85,14 @@
 
             <label class="fiel_item">
                <input style="background-color: #fff;
-                  width: 185px;
+                  width: 400px;
                   padding: 10px;
                   border-radius: 10px;" 
                   type="password" 
                   id="registration_password" 
                   name="password" 
                   class="form-control <?php echo $session->has('password') ? 'is-invalid' : '' ?>" 
-                  placeholder="Придумайте пароль"
-               >
-            </label>
-            
-            <label class="fiel_item">
-               <input style="background-color: #fff;
-                  width: 185px;
-                  padding: 10px;
-                  border-radius: 10px;" 
-                  type="password" 
-                  id="registration_password_confirmation" 
-                  name="password_confirmation" 
-                  class="form-control" 
-                  placeholder="Повторите пароль"
+                  placeholder="Введите пароль"
                >
             </label><br>
             <?php if($session->has('password')) { ?>
@@ -149,9 +116,8 @@
                   background-color: #ffff00;" 
                   type="submit" 
                   name="button_form_registration" 
-                  class="modal_button_forms">Создать Аккаунт<a>*</a>
-               </button><br><br>
-               <a>*</a><i>Нажимая "Создать Аккаунт", Вы подтверждаете,<br>что прочитали и согласны с нашими Условиями Пользователя<br>и Политикой Конфиденциальности</i>
+                  class="modal_button_forms">Войти в Аккаунт
+               </button><br>
             </div>
          </form>
 
@@ -170,4 +136,4 @@
    </div>
 </main>
 
-<?php //$view->component('end'); ?>
+<?php //$view->component('end_simple'); ?>

@@ -4,7 +4,6 @@
     */
 ?>
 
-<?php $view->component('footer'); ?>
 <script src=""></script>
 </body>
 </html>
